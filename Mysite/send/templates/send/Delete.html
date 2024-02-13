@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Delete</title>
+    <p>Удаление</p>
+</head>
+<body>
+<form method="post">
+    {%csrf_token%}
+    <p>Delete {{msg.text}}</p>
+    <input type="submit"value="Удалить">
+</form>
+</body>
+</html>

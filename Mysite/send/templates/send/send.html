@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+{%if user.is_authenticated%}
+<p>Hi</p>
+<p>{{usr.username}}</p>
+<head>
+    <meta charset="UTF-8">
+    <title>Отправьте своё сообщение</title>
+    <h1>Отправьте своё сообщение</h1>
+    <a href="{%url 'view'%}">Вернуться к просмотру</a>
+</head>
+<body>
+<form method="post">
+    {% csrf_token %}
+    {{form.as_p}}
+    <input type="submit"value="Добавить">
+</form>
+
+
+
+
+</body>
+</html>
+{%else%}
+<p>Not authenticated</p>
+{%endif%}
