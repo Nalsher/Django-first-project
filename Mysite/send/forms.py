@@ -15,6 +15,11 @@ class Userreg(UserCreationForm):
                   'password1',
                   'password2',
         ]
+class Msgform(forms.ModelForm):
+    text = forms.CharField(widget=TextInput)
+    class Meta:
+        model = messages
+        fields = ('text',)
 
 
 

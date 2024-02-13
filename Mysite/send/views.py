@@ -4,7 +4,7 @@ from django.views.generic.edit import CreateView
 from django.core.paginator import Paginator
 from django.urls import reverse
 from django.views.generic.edit import DeleteView
-from .forms import Userreg
+from .forms import Userreg,Msgform
 from django.urls import reverse_lazy
 from django.views.generic.base import TemplateView
 from django.contrib.auth.models import User
@@ -36,11 +36,6 @@ def sample_view(request):
 
 
 def add_and_save(request):
-    class Msgform(forms.ModelForm):
-        text = forms.CharField(widget=TextInput)
-        class Meta:
-            model = messages
-            fields = ('text',)
 
     if request.method == 'POST':
         msgform = Msgform(request.POST)
@@ -79,7 +74,7 @@ class UserReg(CreateView):
 
 class UserLog(LoginView):
     template_name = 'send/log.html'
-    
+
     redirect_authenticated_user = False
 
 
