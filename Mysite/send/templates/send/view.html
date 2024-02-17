@@ -1,5 +1,8 @@
+{%load bootstrap4 %}
+{% bootstrap_css %}
+{% bootstrap_javascript jquery=True %}
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:text-align="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8">
     <title>Последние сообщения</title>
@@ -7,26 +10,23 @@
 </head>
 <body>
 {%for ms in mesage%}
-<div>
-<ul>
-    <li>{{ms.text}} - <a href="{% url 'dl' ms.pk%}">delete</a></li>
-    <p>{{ms.written_by}}</p>
-</ul>
-</div>
+{% url 'dl' ms.id as delete_url%}
 
+<div class="note">
+    <h2>{%bootstrap_label ms.text label_class='list-group-item'%}</h2>
+</div>
+<div class="label">
+    <button text-align:right;><a href="{{ms.id}}">Delete</a></button>
+</div>
+<div class="list">
+<h6>{{ms.written_by}}</h6>
+</div>
 {%endfor%}
 </body>
-<div>
-    {% if page.has_previous %}
-    <a href="?page={{page.previous_page_number}}">&lt;</a>
-    &nbsp;&nbsp;| &nbsp;&nbsp;
-    {%endif%}
-    {% if page.has_next %}
-    &nbsp;&nbsp;| &nbsp;&nbsp;
-    <a href="?page={{page.next_page_number}}">&gt;</a>
-    {%endif%}
-</div>
 
+<div>
+    {%bootstrap_pagination page size='small' %}
+</div>
 <div>
     <a href="{%url 'create'%}">Registr</a> <a href="{%url 'login'%}">Login</a>
     <form style="display:inline-block" method="post" action="{% url 'logout' %}">

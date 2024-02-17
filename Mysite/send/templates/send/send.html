@@ -1,9 +1,11 @@
+{% load bootstrap4 %}
+{% bootstrap_css %}
+{% bootstrap_javascript jquery=True %}
 <!DOCTYPE html>
 <html lang="en">
 {%if user.is_authenticated%}
-<p>Hi</p>
-<p>{{usr.username}}</p>
 <head>
+
     <meta charset="UTF-8">
     <title>Отправьте своё сообщение</title>
     <h1>Отправьте своё сообщение</h1>
@@ -12,13 +14,9 @@
 <body>
 <form method="post">
     {% csrf_token %}
-    {{form.as_p}}
-    <input type="submit"value="Добавить">
+    {% bootstrap_form form layout='inline' size='small'%}
+    {% buttons submit='Отправить сообщение' %} {%endbuttons%}
 </form>
-
-
-
-
 </body>
 </html>
 {%else%}
