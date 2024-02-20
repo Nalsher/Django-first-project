@@ -1,5 +1,5 @@
 from django.shortcuts import render,HttpResponse,HttpResponseRedirect
-from .models import messages
+from .models import messages,imagesend
 from django.views.generic.edit import CreateView
 from django.core.paginator import Paginator
 from django.urls import reverse
@@ -13,6 +13,7 @@ from django import forms
 from django.forms.widgets import *
 #Create your project here
 def view(request):
+    images = imagesend.objects.all()
     mesage = messages.objects.all()
     paginator = Paginator(mesage,4)
     if 'page' in request.GET:
@@ -83,4 +84,5 @@ class UserLog(LoginView):
     redirect_authenticated_user = False
 
 
-
+class Logout(LogoutView):
+    template_name = 'send/good.html'

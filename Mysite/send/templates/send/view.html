@@ -1,12 +1,13 @@
 {%load bootstrap4 %}
 {% bootstrap_css %}
 {% bootstrap_javascript jquery=True %}
+{% load filtersandtags %}
 <!DOCTYPE html>
 <html lang="en" xmlns:text-align="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8">
     <title>Последние сообщения</title>
-    <p><b>Последние сообщения <a href ="{%url 'send'%}">Отправить сообщение</a></b></p>
+    <p><b>Последние сообщения <a href ="{%url 'send'%}">Отправить сообщение</a></b>{% cur %}</p>
 </head>
 <body>
 {%for ms in mesage%}
@@ -34,4 +35,5 @@
 <button type="submit">Выйти</button></form>
 
 </div>
+<!--{% ulist '1' '2' '3' '4' '5' '6' '7' '8' '9' %}-->
 </html>

@@ -15,3 +15,9 @@ class messages(models.Model):
         verbose_name = 'Сообщение'
     def __str__(self):
         return self.text
+
+class imagesend(models.Model):
+    img = models.ImageField(verbose_name='Изображение')
+    class Meta:
+        verbose_name = 'Изображение'
+        verbose_name_plural = 'Изображения'
